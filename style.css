@@ -1,1 +1,350 @@
-/home/claude/diet-site/style.css
+@import url('https://fonts.googleapis.com/css2?family=Tiro+Bangla:ital@0;1&family=Hind+Siliguri:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg: #1b1712;
+  --panel: #241e17;
+  --panel-2: #2c241a;
+  --line: #3a3025;
+  --gold: #d6a340;
+  --gold-dim: #a67d31;
+  --red: #b8402f;
+  --green: #8a9765;
+  --text: #f4ecda;
+  --text-dim: #b9ab8f;
+  --radius: 3px;
+}
+
+*{ box-sizing: border-box; }
+
+html{ scroll-behavior: smooth; }
+
+body{
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Hind Siliguri', 'Hind Siliguri Bangla', sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap{
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- header ---------- */
+
+header.site{
+  border-bottom: 1px solid var(--line);
+  padding: 22px 0 0;
+}
+
+header.site .wrap{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-bottom: 16px;
+}
+
+.brand{
+  font-family: 'Tiro Bangla', serif;
+  font-size: 22px;
+  color: var(--gold);
+  text-decoration: none;
+  letter-spacing: 0.2px;
+}
+
+.brand span{
+  color: var(--text-dim);
+  font-family: 'Hind Siliguri', sans-serif;
+  font-size: 13px;
+  display: block;
+  margin-top: 2px;
+}
+
+nav.site{
+  display: flex;
+  gap: 22px;
+}
+
+nav.site a{
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 15px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid transparent;
+}
+
+nav.site a:hover, nav.site a.active{
+  color: var(--text);
+  border-bottom-color: var(--gold);
+}
+
+/* ---------- hero ---------- */
+
+.hero{
+  padding: 48px 0 28px;
+  border-bottom: 1px solid var(--line);
+}
+
+.hero .today-label{
+  color: var(--gold);
+  font-size: 15px;
+  margin: 0 0 6px;
+}
+
+.hero h1{
+  font-family: 'Tiro Bangla', serif;
+  font-weight: 400;
+  font-size: 44px;
+  margin: 0 0 8px;
+  line-height: 1.2;
+}
+
+.hero .sub{
+  color: var(--text-dim);
+  font-size: 16px;
+  max-width: 60ch;
+  margin: 0;
+}
+
+.underline-mark{
+  display: block;
+  width: 148px;
+  height: 10px;
+  margin-top: 10px;
+}
+.underline-mark path{ stroke: var(--gold); stroke-width: 3; fill: none; }
+
+/* ---------- day strip ---------- */
+
+.day-strip{
+  display: flex;
+  gap: 8px;
+  padding: 18px 0;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--line);
+}
+
+.day-chip{
+  flex: 0 0 auto;
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--text-dim);
+  font-size: 14px;
+  cursor: pointer;
+  background: transparent;
+  font-family: 'Hind Siliguri', sans-serif;
+}
+
+.day-chip.is-today{
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(214,163,64,0.08);
+}
+
+.day-chip:hover{ color: var(--text); }
+
+/* ---------- timeline (home: today's plate) ---------- */
+
+.timeline{
+  padding: 30px 0 10px;
+}
+
+.meal-row{
+  display: grid;
+  grid-template-columns: 92px 1fr auto;
+  gap: 18px;
+  align-items: start;
+  padding: 22px 0;
+  border-top: 1px solid var(--line);
+}
+
+.meal-row:last-child{ border-bottom: 1px solid var(--line); }
+
+.meal-time{
+  font-family: 'Tiro Bangla', serif;
+  color: var(--gold-dim);
+  font-size: 15px;
+  padding-top: 2px;
+}
+
+.meal-name{
+  color: var(--text-dim);
+  font-size: 13px;
+  margin: 0 0 4px;
+}
+
+.meal-items{
+  font-size: 18px;
+  margin: 0;
+}
+
+.meal-macros{
+  text-align: right;
+  white-space: nowrap;
+  font-size: 14px;
+  color: var(--text-dim);
+  padding-top: 2px;
+}
+
+.meal-macros b{ color: var(--text); font-weight: 600; }
+
+.day-total{
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 0 6px;
+  color: var(--text-dim);
+  font-size: 14px;
+}
+.day-total b{ color: var(--gold); font-weight: 600; }
+
+/* ---------- weekly table (menu page) ---------- */
+
+.table-scroll{
+  overflow-x: auto;
+  margin: 28px 0 40px;
+  border: 1px solid var(--line);
+}
+
+table.week{
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 760px;
+}
+
+table.week th, table.week td{
+  border: 1px solid var(--line);
+  padding: 12px 14px;
+  text-align: left;
+  vertical-align: top;
+  font-size: 14.5px;
+}
+
+table.week thead th{
+  font-family: 'Tiro Bangla', serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--text);
+  background: var(--panel);
+  position: sticky;
+  top: 0;
+}
+
+table.week td.meal-label{
+  color: var(--gold-dim);
+  font-size: 13px;
+  white-space: nowrap;
+  background: var(--panel);
+}
+
+table.week .macro{
+  display: block;
+  color: var(--text-dim);
+  font-size: 12px;
+  margin-top: 3px;
+}
+
+table.week th.today-col, table.week td.today-col{
+  background: rgba(214,163,64,0.10);
+  border-left: 1px solid var(--gold-dim);
+  border-right: 1px solid var(--gold-dim);
+}
+
+table.week th.today-col{ color: var(--gold); }
+
+/* ---------- editorial / nutrition page ---------- */
+
+.stat-row{
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  padding: 30px 0 10px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 30px;
+}
+
+.stat{
+  min-width: 140px;
+}
+
+.stat .num{
+  font-family: 'Tiro Bangla', serif;
+  font-size: 40px;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.stat .label{
+  color: var(--text-dim);
+  font-size: 13.5px;
+  margin-top: 6px;
+}
+
+.editorial{
+  max-width: 68ch;
+}
+
+.editorial h2{
+  font-family: 'Tiro Bangla', serif;
+  font-weight: 400;
+  font-size: 24px;
+  margin: 38px 0 10px;
+}
+
+.editorial p{
+  color: var(--text-dim);
+  margin: 0 0 14px;
+}
+
+.editorial ul{
+  color: var(--text-dim);
+  padding-left: 20px;
+  margin: 0 0 14px;
+}
+
+.editorial li{ margin-bottom: 6px; }
+
+.editorial strong{ color: var(--text); }
+
+.tag-row{
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 14px 0 4px;
+}
+
+.tag{
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 4px 10px;
+  font-size: 13px;
+  color: var(--text-dim);
+}
+.tag.fish{ border-color: var(--gold-dim); color: var(--gold-dim); }
+.tag.chicken{ border-color: var(--red); color: var(--red); }
+.tag.veg{ border-color: var(--green); color: var(--green); }
+
+/* ---------- footer ---------- */
+
+footer.site{
+  border-top: 1px solid var(--line);
+  padding: 26px 0 50px;
+  color: var(--text-dim);
+  font-size: 13.5px;
+  margin-top: 20px;
+}
+
+footer.site a{ color: var(--gold-dim); }
+
+@media (max-width: 620px){
+  .hero h1{ font-size: 32px; }
+  .meal-row{ grid-template-columns: 70px 1fr; }
+  .meal-macros{ grid-column: 1 / -1; text-align: left; padding-top: 6px; }
+  .stat-row{ gap: 26px; }
+}
