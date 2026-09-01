@@ -1,168 +1,171 @@
-// দিনের নাম, JS Date.getDay() অনুযায়ী: 0=রবি ... 6=শনি
-const DAY_NAMES = ["রবিবার", "সোমবার", "মঙ্গলবার", "বুধবার", "বৃহস্পতিবার", "শুক্রবার", "শনিবার"];
-const DAY_SHORT = ["রবি", "সোম", "মঙ্গল", "বুধ", "বৃহস্পতি", "শুক্র", "শনি"];
-
-// সপ্তাহের সম্পূর্ণ মেনু — শুধু ১০টি আইটেম দিয়ে তৈরি: পরোটা, ডাল, ভাজি, ভাত, মাছ, সবজি,
-// মুরগি মাংস, খিচুড়ি, ডিম ভাজি, ডিম ভুনা
+/* ---------- ডেটা: সাপ্তাহিক মেনু ----------
+   day: JS Date().getDay() কনভেনশন (রবি=0, সোম=1 ... শনি=6)
+*/
 const WEEK = [
-  { // রবিবার
-    breakfast: { time: "সকাল ৮টা", items: "পরোটা (২টি) + ডিম ভুনা", kcal: 500, protein: 22 },
-    lunch:     { time: "দুপুর ১টা", items: "ভাত + মাছ + সবজি + ডাল", kcal: 850, protein: 38 },
-    snack:     { time: "বিকাল ৫টা", items: "ডিম ভাজি + মুড়ি", kcal: 300, protein: 12 },
-    dinner:    { time: "রাত ৯টা", items: "ভাত + মুরগি মাংস + ভাজি", kcal: 800, protein: 38 }
+  {
+    day: 6, name: "শনিবার", short: "শনি",
+    meals: {
+      sokal: { items: "পরোটা ২টা + ডিম ভুনা ২টা" },
+      dupur: { items: "ভাত + মুরগির মাংস + ডাল + সবজি" },
+      raat:  { items: "ভাত + মাছ + ডাল + ভাজি" }
+    },
+    kcal: "~২৬০০", protein: "~১২০ গ্রাম"
   },
-  { // সোমবার
-    breakfast: { time: "সকাল ৮টা", items: "পরোটা (২টি) + ডাল", kcal: 480, protein: 18 },
-    lunch:     { time: "দুপুর ১টা", items: "ভাত + মুরগি মাংস + সবজি + ডাল", kcal: 860, protein: 40 },
-    snack:     { time: "বিকাল ৫টা", items: "ডিম ভুনা", kcal: 280, protein: 14 },
-    dinner:    { time: "রাত ৯টা", items: "খিচুড়ি + ডিম ভাজি + ভাজি", kcal: 780, protein: 32 }
+  {
+    day: 0, name: "রবিবার", short: "রবি",
+    meals: {
+      sokal: { items: "খিচুড়ি এক বড় বাটি + ডিম ভাজি ১টা" },
+      dupur: { items: "ভাত + মাছ + সবজি + ডাল" },
+      raat:  { items: "ভাত + মুরগির মাংস + ভাজি" }
+    },
+    kcal: "~২৫০০", protein: "~১১০ গ্রাম"
   },
-  { // মঙ্গলবার
-    breakfast: { time: "সকাল ৮টা", items: "পরোটা (২টি) + ডিম ভাজি", kcal: 500, protein: 20 },
-    lunch:     { time: "দুপুর ১টা", items: "ভাত + মাছ + ভাজি + ডাল", kcal: 830, protein: 36 },
-    snack:     { time: "বিকাল ৫টা", items: "ডাল + মুড়ি", kcal: 270, protein: 10 },
-    dinner:    { time: "রাত ৯টা", items: "ভাত + মুরগি মাংস + সবজি", kcal: 820, protein: 38 }
+  {
+    day: 1, name: "সোমবার", short: "সোম",
+    meals: {
+      sokal: { items: "পরোটা ২টা + ডিম ভাজি ২টা" },
+      dupur: { items: "ভাত (২ প্লেট) + মুরগির মাংস + ডাল" },
+      raat:  { items: "খিচুড়ি + ডিম ভুনা ১টা" }
+    },
+    kcal: "~২৫৫০", protein: "~১১৫ গ্রাম"
   },
-  { // বুধবার
-    breakfast: { time: "সকাল ৮টা", items: "পরোটা (২টি) + ডিম ভুনা", kcal: 500, protein: 22 },
-    lunch:     { time: "দুপুর ১টা", items: "খিচুড়ি + ডিম ভাজি", kcal: 650, protein: 26 },
-    snack:     { time: "বিকাল ৫টা", items: "ডিম ভাজি", kcal: 220, protein: 13 },
-    dinner:    { time: "রাত ৯টা", items: "ভাত + মাছ + সবজি + ডাল", kcal: 850, protein: 38 }
+  {
+    day: 2, name: "মঙ্গলবার", short: "মঙ্গল",
+    meals: {
+      sokal: { items: "স্কিপ / ক্লাস থাকলে বাদ", note: "সময় না পেলে বাদ দাও, দুপুরে পুষিয়ে নেবে" },
+      dupur: { items: "ভাত + মাছ + ডাল + সবজি + ভাজি" },
+      raat:  { items: "ভাত + মুরগির মাংস + ডাল" }
+    },
+    kcal: "~২৪৫০", protein: "~১১০ গ্রাম"
   },
-  { // বৃহস্পতিবার
-    breakfast: { time: "সকাল ৮টা", items: "পরোটা (২টি) + ডাল", kcal: 480, protein: 18 },
-    lunch:     { time: "দুপুর ১টা", items: "ভাত + মুরগি মাংস + ভাজি + ডাল", kcal: 870, protein: 40 },
-    snack:     { time: "বিকাল ৫টা", items: "ডিম ভুনা", kcal: 280, protein: 14 },
-    dinner:    { time: "রাত ৯টা", items: "ভাত + মাছ + সবজি", kcal: 780, protein: 34 }
+  {
+    day: 3, name: "বুধবার", short: "বুধ",
+    meals: {
+      sokal: { items: "খিচুড়ি + ডিম ভুনা ১টা" },
+      dupur: { items: "ভাত + মুরগির মাংস + সবজি" },
+      raat:  { items: "ভাত + মাছ + ডাল + ভাজি" }
+    },
+    kcal: "~২৫০০", protein: "~১১৫ গ্রাম"
   },
-  { // শুক্রবার — ফুটবলের দিন, বাড়তি এনার্জি
-    breakfast: { time: "সকাল ৮টা", items: "পরোটা (২টি) + ডিম ভুনা + ডাল", kcal: 600, protein: 26 },
-    lunch:     { time: "দুপুর ১টা", items: "ভাত + মুরগি মাংস + সবজি + ডাল", kcal: 900, protein: 42 },
-    snack:     { time: "বিকাল ৫টা (খেলার আগে)", items: "ডিম ভাজি + মুড়ি (বাড়তি)", kcal: 350, protein: 15 },
-    dinner:    { time: "রাত ৯টা", items: "খিচুড়ি + মাছ + ভাজি", kcal: 820, protein: 36 }
+  {
+    day: 4, name: "বৃহস্পতিবার", short: "বৃহ",
+    meals: {
+      sokal: { items: "পরোটা ২টা + ডিম ভাজি ২টা + ডাল" },
+      dupur: { items: "ভাত + মাছ + ডাল" },
+      raat:  { items: "ভাত + মুরগির মাংস + সবজি + ভাজি" }
+    },
+    kcal: "~২৫৫০", protein: "~১২০ গ্রাম"
   },
-  { // শনিবার
-    breakfast: { time: "সকাল ৮টা", items: "পরোটা (২টি) + ডিম ভাজি", kcal: 500, protein: 20 },
-    lunch:     { time: "দুপুর ১টা", items: "ভাত + মাছ + সবজি + ডাল", kcal: 850, protein: 38 },
-    snack:     { time: "বিকাল ৫টা", items: "ডিম ভুনা", kcal: 280, protein: 14 },
-    dinner:    { time: "রাত ৯টা", items: "ভাত + মুরগি মাংস + ভাজি", kcal: 800, protein: 36 }
+  {
+    day: 5, name: "শুক্রবার", short: "শুক্র",
+    meals: {
+      sokal: { items: "পরোটা ২টা + ডিম ভুনা ২টা", note: "ছুটির দিন, একটু স্পেশাল" },
+      dupur: { items: "ভাত + মুরগির মাংস (বড় পিস) + ডাল + সবজি + ভাজি" },
+      raat:  { items: "খিচুড়ি + ডিম ভাজি + মাছ" }
+    },
+    kcal: "~২৬৫০", protein: "~১২৫ গ্রাম"
   }
 ];
 
-const MEAL_LABELS = {
-  breakfast: "সকালের নাস্তা",
-  lunch: "দুপুরের খাবার",
-  snack: "বিকালের নাস্তা",
-  dinner: "রাতের খাবার"
-};
+/* ---------- ডেটা: খাবারের আনুমানিক পুষ্টিমান (প্রতি সাধারণ hall সার্ভিং) ---------- */
+const FOODS = [
+  { name: "পরোটা (১টি)", kcal: 150, protein: 3, note: "ময়দা + তেল" },
+  { name: "ডাল (১ বাটি)", kcal: 130, protein: 7, note: "মসুর/মুগ" },
+  { name: "ভাজি (সবজি, ১ সার্ভিং)", kcal: 90, protein: 2, note: "" },
+  { name: "ভাত (১ প্লেট, ~২৫০গ্রাম)", kcal: 325, protein: 6, note: "কার্ব-এর মূল উৎস" },
+  { name: "মাছ (১ পিস, ঝোল)", kcal: 150, protein: 20, note: "" },
+  { name: "সবজি তরকারি (১ বাটি)", kcal: 100, protein: 3, note: "" },
+  { name: "মুরগির মাংস (১ সার্ভিং, ~১৫০গ্রাম)", kcal: 250, protein: 25, note: "সবচেয়ে ঘন প্রোটিন" },
+  { name: "খিচুড়ি (১ প্লেট)", kcal: 380, protein: 12, note: "ডাল+চাল একসাথে" },
+  { name: "ডিম ভাজি (১টি)", kcal: 90, protein: 6, note: "" },
+  { name: "ডিম ভুনা (১টি, ঝোল সহ)", kcal: 110, protein: 6, note: "" }
+];
 
-function dayTotal(day){
-  return ["breakfast","lunch","snack","dinner"].reduce((acc, m) => {
-    acc.kcal += day[m].kcal;
-    acc.protein += day[m].protein;
-    return acc;
-  }, { kcal: 0, protein: 0 });
+const BN_DIGIT = ["০","১","২","৩","৪","৫","৬","৭","৮","৯"];
+const BN_MONTH = ["জানুয়ারি","ফেব্রুয়ারি","মার্চ","এপ্রিল","মে","জুন","জুলাই","আগস্ট","সেপ্টেম্বর","অক্টোবর","নভেম্বর","ডিসেম্বর"];
+
+function toBn(n){
+  return String(n).split("").map(ch => (ch >= "0" && ch <= "9") ? BN_DIGIT[+ch] : ch).join("");
 }
 
-function todayIndex(){
-  return new Date().getDay();
+function bnDateString(d){
+  return `${toBn(d.getDate())} ${BN_MONTH[d.getMonth()]}, ${toBn(d.getFullYear())}`;
 }
 
-// ---------- হোম পেজ: আজকের প্লেট ----------
-function renderHome(){
-  const idx = todayIndex();
-  const day = WEEK[idx];
-  const total = dayTotal(day);
-
-  const labelEl = document.querySelector("[data-today-label]");
-  const titleEl = document.querySelector("[data-today-title]");
-  if(labelEl) labelEl.textContent = "আজকের রুটিন";
-  if(titleEl) titleEl.textContent = DAY_NAMES[idx];
-
-  const timeline = document.querySelector("[data-timeline]");
-  if(timeline){
-    timeline.innerHTML = "";
-    ["breakfast","lunch","snack","dinner"].forEach(m => {
-      const meal = day[m];
-      const row = document.createElement("div");
-      row.className = "meal-row";
-      row.innerHTML = `
-        <div class="meal-time">${meal.time}</div>
-        <div>
-          <p class="meal-name">${MEAL_LABELS[m]}</p>
-          <p class="meal-items">${meal.items}</p>
-        </div>
-        <div class="meal-macros"><b>${meal.kcal}</b> kcal<br>${meal.protein} g প্রোটিন</div>
-      `;
-      timeline.appendChild(row);
-    });
-  }
-
-  const totalEl = document.querySelector("[data-day-total]");
-  if(totalEl){
-    totalEl.innerHTML = `মোট আজকে &nbsp; <b>${total.kcal} kcal</b> &nbsp;•&nbsp; <b>${total.protein} g প্রোটিন</b>`;
-  }
-
-  renderDayStrip(idx, (i) => {
-    const d = WEEK[i];
-    const t = dayTotal(d);
-    if(titleEl) titleEl.textContent = DAY_NAMES[i] + (i === idx ? "" : " (প্রিভিউ)");
-    timeline.innerHTML = "";
-    ["breakfast","lunch","snack","dinner"].forEach(m => {
-      const meal = d[m];
-      const row = document.createElement("div");
-      row.className = "meal-row";
-      row.innerHTML = `
-        <div class="meal-time">${meal.time}</div>
-        <div>
-          <p class="meal-name">${MEAL_LABELS[m]}</p>
-          <p class="meal-items">${meal.items}</p>
-        </div>
-        <div class="meal-macros"><b>${meal.kcal}</b> kcal<br>${meal.protein} g প্রোটিন</div>
-      `;
-      timeline.appendChild(row);
-    });
-    if(totalEl) totalEl.innerHTML = `মোট &nbsp; <b>${t.kcal} kcal</b> &nbsp;•&nbsp; <b>${t.protein} g প্রোটিন</b>`;
-  });
+function getToday(){
+  const now = new Date();
+  const dow = now.getDay();
+  return { entry: WEEK.find(w => w.day === dow), dateStr: bnDateString(now) };
 }
 
-function renderDayStrip(idx, onClick){
-  const strip = document.querySelector("[data-day-strip]");
-  if(!strip) return;
-  strip.innerHTML = "";
-  DAY_SHORT.forEach((name, i) => {
-    const chip = document.createElement("button");
-    chip.type = "button";
-    chip.className = "day-chip" + (i === idx ? " is-today" : "");
-    chip.textContent = name;
-    chip.addEventListener("click", () => onClick && onClick(i));
-    strip.appendChild(chip);
-  });
+/* ---------- হোমপেজ হিরো রেন্ডার ---------- */
+function renderTodayHero(){
+  const mount = document.getElementById("today-mount");
+  if (!mount) return;
+  const { entry, dateStr } = getToday();
+
+  const noteHtml = (m) => m.note ? `<span class="meal-note">${m.note}</span>` : "";
+
+  mount.innerHTML = `
+    <div class="today-head">
+      <span class="day-name">আজ, ${entry.name}</span>
+      <span class="date-str">${dateStr}</span>
+    </div>
+    <div class="meal-rows">
+      <div class="meal-row"><div class="meal-time">সকাল</div><div class="meal-items">${entry.meals.sokal.items}${noteHtml(entry.meals.sokal)}</div></div>
+      <div class="meal-row"><div class="meal-time">দুপুর</div><div class="meal-items">${entry.meals.dupur.items}${noteHtml(entry.meals.dupur)}</div></div>
+      <div class="meal-row"><div class="meal-time">রাত</div><div class="meal-items">${entry.meals.raat.items}${noteHtml(entry.meals.raat)}</div></div>
+    </div>
+    <div class="target-bar">
+      <div class="t-item"><div class="t-num">${entry.kcal}</div><div class="t-label">ক্যালরি লক্ষ্য</div></div>
+      <div class="t-item"><div class="t-num">${entry.protein}</div><div class="t-label">প্রোটিন লক্ষ্য</div></div>
+    </div>
+  `;
 }
 
-// ---------- মেনু পেজ: সাপ্তাহিক টেবিল ----------
-function renderWeekTable(){
-  const idx = todayIndex();
-  const head = document.querySelector("[data-week-head]");
-  const body = document.querySelector("[data-week-body]");
-  if(!head || !body) return;
-
-  head.innerHTML = "<th>বেলা</th>" + DAY_NAMES.map((n,i) =>
-    `<th class="${i===idx?'today-col':''}">${n}${i===idx?' <br><small>(আজ)</small>':''}</th>`
+/* ---------- সপ্তাহ-স্ট্রিপ (হোমপেজে ছোট নেভিগেশন) ---------- */
+function renderWeekStrip(){
+  const mount = document.getElementById("week-strip-mount");
+  if (!mount) return;
+  const today = new Date().getDay();
+  mount.innerHTML = WEEK.map(w =>
+    `<a href="week.html" class="${w.day === today ? "is-today" : ""}">${w.short}</a>`
   ).join("");
+}
 
-  const rows = ["breakfast","lunch","snack","dinner"];
-  body.innerHTML = rows.map(m => {
-    const cells = WEEK.map((d,i) => {
-      const meal = d[m];
-      return `<td class="${i===idx?'today-col':''}">${meal.items}<span class="macro">${meal.time} • ${meal.kcal} kcal • ${meal.protein}g প্রোটিন</span></td>`;
-    }).join("");
-    return `<tr><td class="meal-label">${MEAL_LABELS[m]}</td>${cells}</tr>`;
-  }).join("");
+/* ---------- সাপ্তাহিক লেজার টেবিল (week.html) ---------- */
+function renderLedger(){
+  const mount = document.getElementById("ledger-mount");
+  if (!mount) return;
+  const today = new Date().getDay();
+  mount.innerHTML = WEEK.map((w, i) => `
+    <tr class="${w.day === today ? "is-today" : ""}">
+      <td class="day-cell"><span class="num">${toBn(i+1)}</span>${w.name}</td>
+      <td>${w.meals.sokal.items}${w.meals.sokal.note ? `<span class="meal-note">${w.meals.sokal.note}</span>` : ""}</td>
+      <td>${w.meals.dupur.items}</td>
+      <td>${w.meals.raat.items}</td>
+      <td>${w.kcal}<br><span class="meal-note">${w.protein} প্রোটিন</span></td>
+    </tr>
+  `).join("");
+}
+
+/* ---------- ফুড রেফারেন্স টেবিল (nutrition.html) ---------- */
+function renderFoodTable(){
+  const mount = document.getElementById("food-table-mount");
+  if (!mount) return;
+  mount.innerHTML = FOODS.map(f => `
+    <tr>
+      <td>${f.name}</td>
+      <td class="num">${toBn(f.kcal)}</td>
+      <td class="num">${toBn(f.protein)} গ্রাম</td>
+      <td>${f.note}</td>
+    </tr>
+  `).join("");
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const page = document.body.dataset.page;
-  if(page === "home") renderHome();
-  if(page === "menu") renderWeekTable();
+  renderTodayHero();
+  renderWeekStrip();
+  renderLedger();
+  renderFoodTable();
 });
