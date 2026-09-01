@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>সাপ্তাহিক মেনু — হলের থালা</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a class="brand" href="index.html">হলের <em>থালা</em></a>
+    <ul class="nav-links">
+      <li><a href="index.html">হোম</a></li>
+      <li><a href="week.html" class="active">সাপ্তাহিক মেনু</a></li>
+      <li><a href="nutrition.html">নিউট্রিশন</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" style="padding-bottom:16px;">
+  <div class="wrap">
+    <p class="kicker">সাপ্তাহিক খাদ্য তালিকা</p>
+    <h1>সাত দিনের পুরো মেনু, এক পাতায়।</h1>
+    <p class="lede">আজকের দিনটা হাইলাইট করা আছে। প্রতিটা মিলেই ভাতের পরিমাণ, ডিমের সংখ্যা প্রয়োজনমতো বাড়ানো যায় — এখানে যা লেখা তা বেসলাইন।</p>
+  </div>
+</header>
+
+<section class="block" style="border-top:none; padding-top:12px;">
+  <div class="wrap">
+    <div style="overflow-x:auto;">
+      <table class="ledger">
+        <thead>
+          <tr>
+            <th>দিন</th>
+            <th>সকাল</th>
+            <th>দুপুর</th>
+            <th>রাত</th>
+            <th>লক্ষ্য</th>
+          </tr>
+        </thead>
+        <tbody id="ledger-mount"><!-- JS দিয়ে পূরণ হবে --></tbody>
+      </table>
+    </div>
+
+    <div class="note-box">
+      সকালের খাবার স্কিপ হলে দুপুরে এক প্লেট ভাত বা একটা ডিম বাড়িয়ে দিলে দিনের ক্যালরি ঘাটতি পুষিয়ে যায়।
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    হলের থালা — ব্যক্তিগত ডাইনিং প্ল্যান, PSTU, Dumki।
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
