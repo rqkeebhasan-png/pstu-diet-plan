@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>নিউট্রিশন হিসাব — হলের থালা</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a class="brand" href="index.html">হলের <em>থালা</em></a>
+    <ul class="nav-links">
+      <li><a href="index.html">হোম</a></li>
+      <li><a href="week.html">সাপ্তাহিক মেনু</a></li>
+      <li><a href="nutrition.html" class="active">নিউট্রিশন</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" style="padding-bottom:16px;">
+  <div class="wrap">
+    <p class="kicker">হিসাবটা কীভাবে করা হয়েছে</p>
+    <h1>২১ বছর, ৬২ কেজি, ৫ফুট ৭ইঞ্চি — সংখ্যাগুলো কোথা থেকে এলো।</h1>
+    <p class="lede">লক্ষ্য: ওজন ও মাসল বাড়ানো, হালকা অ্যাক্টিভিটি লেভেল (বসে পড়াশোনা + সপ্তাহে একদিন ফুটবল)।</p>
+  </div>
+</header>
+
+<section class="block" style="border-top:none; padding-top:12px;">
+  <div class="wrap">
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-num">১৫৮৩</div><div class="stat-label">BMR (kcal/দিন) — বিশ্রামে শরীর যা পোড়ায়</div></div>
+      <div class="stat"><div class="stat-num">~২১৮০</div><div class="stat-label">TDEE (kcal/দিন) — অ্যাক্টিভিটিসহ মেইনেজ্঳ান্স</div></div>
+      <div class="stat"><div class="stat-num">২৪৫০–২৬৫০</div><div class="stat-label">দৈনিক ক্যালরি লক্ষ্য (লিন বাল্ক)</div></div>
+      <div class="stat"><div class="stat-num">১১০–১২৫ গ্রাম</div><div class="stat-label">দৈনিক প্রোটিন লক্ষ্য</div></div>
+    </div>
+
+    <h2>হিসাবের ধাপ</h2>
+    <p><strong>BMR</strong> বের করা হয়েছে Mifflin-St Jeor ফর্মুলা দিয়ে: <br>১০ × ওজন(কেজি) + ৬.২৫ × উচ্চতা(সেমি) − ৫ × বয়স + ৫ <br>= ১০×৬২ + ৬.২৫×১৭০ − ৫×২১ + ৫ ≈ <strong>১৫৮৩ kcal</strong></p>
+    <p><strong>TDEE</strong> বের করতে BMR-কে অ্যাক্টিভিটি মাল্টিপ্লায়ার (হালকা অ্যাক্টিভিটির জন্য ১.৩৭৫) দিয়ে গুণ করা হয়েছে ≈ <strong>২২৮৮ঠkcal</strong> — এটাই বর্তমান ওজন ১রে রাখার জন্য দরকারি ক্যালরি।</p>
+    <p>মাসল-সॹ ওজন বাড়াতে চ ��ে দিনে <strong>৩00–৥00 kcal</strong> সারপ্লাস দরকার — তাই লক্ষ্য রাখা হয়েছে <strong>~২৫০০–২৬০০ kcal/দিন</strong>। প্রোটিন লক্ষ্য শরীরের ওজনের প্রতি কেজিতে 1.8–2.2 গ্রামে করে ≈ <strong>৪৩ গ্রাম</strong>, রাউন্ড করা धधध কীভাওীকতাদুওো দরীরের ।</p>
+
+    <div class="note-box">
+      এই সংখ্য��িথুলো আনৈমানিক�, মেডিকুল পর௶���, দৈনিক� '(
+    </div>
+
+    <h2>খাবারভিত্তিক আনুমানিক পুষ্টিমান</h2>
+    <p>হলের সাধারণ এক সার্ভিং ধরে হিসাব করা — বাস্তবে হলভেদে কিছুটা কমবেশি হতে পারে।</p>
+    <table class="macro-table">
+      <thead>
+        <tr>
+          <th>খাবার</th>
+          <th class="num">ক্যালরি</th>
+          <th class="num">প্রোটিন</th>
+          <th>নোট</th>
+        </tr>
+      </thead>
+      <tbody id="food-table-mount"><!-- JS দিয়ে পূরণ হবে --></tbody>
+    </table>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    হলের থালা — ব্যক্তিগত ডাইনিং প্ল্যান, PSTU, Dumki।
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
